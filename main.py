@@ -4,7 +4,16 @@ import urllib
 from urllib import request
 from bs4 import BeautifulSoup
 
-# variable that stores url of initial document
+# stores url of whole subject
+subject_url = ("https://digitalcollections.library.miami.edu/digital/collection/asm0341/search/searchterm/business%20re"
+               "cords%20--%20management!pan%20american%20world%20airways%2C%20inc.!Manuals%20(instructional%20materials"
+               ")/field/subjec!subjec!genre/mode/exact!exact!exact/conn/and!and!all")
+subject_html = request.urlopen(subject_url).json()
+subject_json = json.loads(subject_html)
+
+print(subject_json)
+
+
 url = "https://digitalcollections.library.miami.edu/digital/api/collections/asm0341/items/110210/false"
 html = request.urlopen(url).read()
 soup = BeautifulSoup(html, 'html.parser')
